@@ -2,7 +2,7 @@ import Link from "next/link"
 
 const Header = () => {
     return (
-        <header className="w-full py-4 bg-[#ffffff00]">
+        <header className="w-full py-4 bg-[#ffffff00] fixed top-0">
             <nav className="main-container flex justify-between items-center">
                 <div className="flex justify-start items-center gap-4">
                     <Link href="/register" className="text-white hover:text-[#74af72]">ثبت نام</Link>
