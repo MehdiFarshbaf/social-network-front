@@ -38,7 +38,8 @@
 
 body {
 
-  background: var(--background);
+  /* background: var(--background); */
+  background: black !important;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
