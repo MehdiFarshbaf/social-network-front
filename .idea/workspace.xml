@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dbcc474-7036-48a0-9112-22bed9335a01" name="Changes" comment="" />
+    <list default="true" id="8dbcc474-7036-48a0-9112-22bed9335a01" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/components/category/CategoryRow.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/category/EditCategoryModal.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/category/ListCategory.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/services/Category.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interfaces/categoryInterfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/Header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/apiConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/apiConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/publlicInterfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/publlicInterfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/functions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/functions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/notifications.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/notifications.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +34,10 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2uU0EJ7ywpfnbVGQsab6cZlK9zx" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -24,14 +46,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/Tailwind Formatter/lib/Tailwind Formatter-2.0.13.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "H:\\Documents\\React\\my-project\\social-network-front\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="H:\Documents\React\my-project\social-network-front\app\(auth)\register" />
@@ -49,6 +81,8 @@
       <workItem from="1742306809758" duration="741000" />
       <workItem from="1742544902739" duration="18000" />
       <workItem from="1742547433530" duration="1893000" />
+      <workItem from="1742729572728" duration="1185000" />
+      <workItem from="1742793463807" duration="4882000" />
     </task>
     <servers />
   </component>
@@ -65,5 +99,8 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

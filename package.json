@@ -13,6 +13,7 @@
     "@mantine/core": "^7.17.2",
     "@mantine/hooks": "^7.17.2",
     "@reduxjs/toolkit": "^2.6.1",
+    "jalali-moment": "^3.3.11",
     "js-cookie": "^3.0.5",
     "next": "15.2.3",
     "react": "^19.0.0",

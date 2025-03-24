@@ -1,19 +1,15 @@
-import { toast } from 'react-toastify'
+import {toast} from 'react-toastify'
+import moment from "jalali-moment"
 
 export const changeToFormData = (body: any) => {
-  const keys = Object.keys(body)
-  let formData: FormData = new FormData()
-  keys.forEach(item => {
-    formData.append(item, body[item])
-  })
-  return formData
+    const keys = Object.keys(body)
+    let formData: FormData = new FormData()
+    keys.forEach(item => {
+        formData.append(item, body[item])
+    })
+    return formData
 }
 
-export const handleShowError = (data: any) => {
-  if (data.errors) {
-    const keys = Object.keys(data.errors)
-    toast.error(data.errors[keys[0]][0])
-  } else {
-    toast.error(data.message)
-  }
+export const showPersianDate = (date: string) => {
+    return moment(date).locale("fa").format("YYYY/MMM/DD")
 }
