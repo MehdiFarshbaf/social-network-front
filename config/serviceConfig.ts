@@ -5,9 +5,9 @@ import {
   FetchBaseQueryError
 } from '@reduxjs/toolkit/query'
 
-import { handleShowError } from '../utils/functions'
 import { BASE_URL } from './apiConfig'
 import Cookie from 'js-cookie';
+import {handleShowError} from "@/utils/notifications";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: BASE_URL,

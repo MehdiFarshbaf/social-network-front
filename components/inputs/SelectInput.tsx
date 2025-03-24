@@ -21,6 +21,7 @@ interface IProps extends FormComponentProps {
 const SelectInput: FC<IProps> = ({ classNames, name, list, control, isLoading, placeholder, label, errors }) => {
     return (
         <div className={`${classNames?.classContainer}`}>
+            {label?.length > 0 && <p className="mb-2 font-normal text-base">{label}</p>}
             <Controller
                 render={({ field: { onChange, onBlur, value, name, ref } }) => (
                     <Select options={list} classNamePrefix="select"
@@ -31,12 +32,13 @@ const SelectInput: FC<IProps> = ({ classNames, name, list, control, isLoading, p
                         value={list.find(ele => ele.value === value)}
                         placeholder={placeholder}
                         classNames={{
-                            control: ({ isFocused }) => isFocused ? '!h-[38px] !w-full !text-white !bg-currentLine !border-[1px] !border-PURPLE !rounded-md outline-none text-white' : '!h-[38px] !w-full !bg-currentLine !text-white !border-[1px] !border-PURPLE !rounded-md outline-none text-white',
-                            placeholder: () => "!text-white",
+                            control: ({ isFocused }) => isFocused ? '!h-[38px] !w-full  !border-[1px]  !rounded-md outline-none ' : '!h-[38px] !w-full  !border-[1px]  !rounded-md outline-none ',
+                            // placeholder: () => "!text-white",
                             // input: () => "!text-white",
                             // valueContainer: () => "!text-white",
-                            singleValue: () => "!text-white",
-                            indicatorsContainer: () => "!text-white"
+                            // singleValue: () => "!text-white",
+                            // indicatorsContainer: () => "!text-white",
+                            menu:()=>"!text-black"
                         }}
                         isLoading={isLoading}
                     />

@@ -34,7 +34,7 @@ const Login = () => {
         defaultValues: {}
     })
 
-    const handleLogin = (data: FormValues) => {
+    const handleLogin = (data) => {
         loginUser(data)
     }
 

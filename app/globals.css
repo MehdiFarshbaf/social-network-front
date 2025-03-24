@@ -21,6 +21,12 @@
 .inputClass {
   @apply h-[38px] w-full py-[6px] px-3 bg-white border-[1px] placeholder:text-gray-700 text-black  rounded-md outline-none focus:shadow
 }
+.label-input {
+  @apply font-normal text-sm leading-[26px] text-neutral-500 text-neutral-500;
+}
+.text-area-input{
+  @apply  w-full py-[6px] px-3 bg-white border-[1px] placeholder:text-gray-700 text-black  rounded-md outline-none focus:shadow
+}
 
 .btn {
   @apply h-[38px] px-3 rounded-md flex justify-center items-center

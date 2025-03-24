@@ -4,6 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { AuthApi } from "./services/Auth";
 import { UserApi } from "./services/User";
 import { CategoryApi } from "./services/Category";
+import { PostApi } from "./services/Post";
 import userData from './slice/User';
 
 
@@ -12,11 +13,13 @@ export const store = configureStore({
         userData,
         [AuthApi.reducerPath]: AuthApi.reducer,
         [UserApi.reducerPath]: UserApi.reducer,
+        [PostApi.reducerPath]: PostApi.reducer,
         [CategoryApi.reducerPath]: CategoryApi.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([
         AuthApi.middleware,
         UserApi.middleware,
+        PostApi.middleware,
         CategoryApi.middleware
     ])
 })

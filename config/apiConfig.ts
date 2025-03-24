@@ -2,3 +2,4 @@
 export const BASE_URL = "http://localhost:5000/api"
 export const USER_PATH = "/users"
 export const Category_PATH = "/category"
+export const Post_PATH = "/post"

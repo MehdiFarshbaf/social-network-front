@@ -4,7 +4,7 @@ import {useGetAllCategoryQuery} from "@/data/services/Category";
 import {ICategory} from "@/interfaces/categoryInterfaces";
 import {useEffect, useState} from "react";
 import CategoryRow from "@/components/category/CategoryRow";
-import Loading from "@/components/loading/Loading";
+import Loading from "@/components/loaders/Loading";
 
 const ListCategory = () => {
     // services
