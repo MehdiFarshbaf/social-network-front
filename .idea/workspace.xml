@@ -5,23 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dbcc474-7036-48a0-9112-22bed9335a01" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/category/CategoryRow.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/category/EditCategoryModal.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/category/ListCategory.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/services/Category.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/interfaces/categoryInterfaces.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/confirmModal/ConfirmModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/apiConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/apiConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/interfaces/publlicInterfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/publlicInterfaces.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/functions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/functions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/notifications.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/notifications.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +67,7 @@
       <workItem from="1742544902739" duration="18000" />
       <workItem from="1742547433530" duration="1893000" />
       <workItem from="1742729572728" duration="1185000" />
-      <workItem from="1742793463807" duration="4882000" />
+      <workItem from="1742793463807" duration="6003000" />
     </task>
     <servers />
   </component>

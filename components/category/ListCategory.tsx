@@ -29,7 +29,7 @@ const ListCategory = () => {
                     <th>عملیات</th>
                 </tr>
                 {categoryList.map((category, index) => (
-                    <CategoryRow category={category} index={index} />
+                    <CategoryRow key={category._id} category={category} index={index} />
                 ))}
                 </tbody>
             </table>

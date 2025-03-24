@@ -2,7 +2,7 @@ import { ResponseApi } from "./publlicInterfaces";
 
 
 export interface ICategory {
-    admin: string|{
+    admin: {
         fullname:string
     },
     title: string,
