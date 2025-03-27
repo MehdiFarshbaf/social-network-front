@@ -10,6 +10,6 @@ export const changeToFormData = (body: any) => {
     return formData
 }
 
-export const showPersianDate = (date: string) => {
-    return moment(date).locale("fa").format("YYYY/MMM/DD")
+export const showPersianDate = (date: string,format?:string) => {
+    return moment(date).locale("fa").format(format ? format : "YYYY/MMM/DD")
 }

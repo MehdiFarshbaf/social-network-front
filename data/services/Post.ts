@@ -1,10 +1,10 @@
-import {createApi} from '@reduxjs/toolkit/query/react'
-import {ID, ResponseApi} from '@/interfaces/publlicInterfaces'
-import {Category_PATH, Post_PATH} from '@/config/apiConfig'
-import {IResultCreateCategory, IResultGetAllCategory} from '@/interfaces/categoryInterfaces'
-import {baseQueryWithReAuth} from "@/config/serviceConfig";
-import {changeToFormData} from "@/utils/functions";
-import {IResultCreatePost} from "@/interfaces/postInterfaces";
+import { createApi } from '@reduxjs/toolkit/query/react'
+import { ID, ResponseApi } from '@/interfaces/publlicInterfaces'
+import { Post_PATH } from '@/config/apiConfig'
+import { IResultCreateCategory } from '@/interfaces/categoryInterfaces'
+import { baseQueryWithReAuth } from "@/config/serviceConfig";
+import { changeToFormData } from "@/utils/functions";
+import { IResponseGetAllPost, IResponseGetPost, IResultCreatePost } from "@/interfaces/postInterfaces";
 
 export const PostApi = createApi({
     reducerPath: 'PostApi',
@@ -12,9 +12,16 @@ export const PostApi = createApi({
     tagTypes: ['Post'],
 
     endpoints: builder => ({
-        getAllPost: builder.query<IResultGetAllCategory, void>({
+        getAllPost: builder.query<IResponseGetAllPost, void>({
             query: () => ({
                 url: `${Post_PATH}`,
+                method: 'GET'
+            }),
+            providesTags: ['Post']
+        }),
+        getPost: builder.query<IResponseGetPost, ID>({
+            query: body => ({
+                url: `${Post_PATH}/${body._id}`,
                 method: 'GET'
             }),
             providesTags: ['Post']
@@ -23,7 +30,7 @@ export const PostApi = createApi({
             query: body => ({
                 url: `${Post_PATH}`,
                 method: 'Post',
-                body:changeToFormData(body)
+                body: changeToFormData(body)
             }),
             invalidatesTags: ['Post']
         }),
@@ -37,11 +44,11 @@ export const PostApi = createApi({
         }),
         deletePost: builder.mutation<ResponseApi, ID>({
             query: (body) => ({
-                url:`${Post_PATH}/${body._id}`,
+                url: `${Post_PATH}/${body._id}`,
                 method: 'DELETE',
             }),
             invalidatesTags: ['Post'],
         }),
     })
 })
-export const {useCreatePostMutation} = PostApi
+export const { useCreatePostMutation, useGetAllPostQuery ,useGetPostQuery} = PostApi
