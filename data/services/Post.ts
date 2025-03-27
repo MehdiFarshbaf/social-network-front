@@ -34,11 +34,11 @@ export const PostApi = createApi({
             }),
             invalidatesTags: ['Post']
         }),
-        editPost: builder.mutation<IResultCreateCategory, any>({
+        editPost: builder.mutation<IResponseGetPost, any>({
             query: (body) => ({
                 url: `${Post_PATH}/${body._id}`,
                 method: 'PUT',
-                body
+                body:changeToFormData(body)
             }),
             invalidatesTags: ['Post'],
         }),
@@ -51,4 +51,4 @@ export const PostApi = createApi({
         }),
     })
 })
-export const { useCreatePostMutation, useGetAllPostQuery ,useGetPostQuery} = PostApi
+export const { useCreatePostMutation, useGetAllPostQuery ,useGetPostQuery,useEditPostMutation} = PostApi

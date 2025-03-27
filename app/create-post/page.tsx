@@ -44,7 +44,7 @@ const CreatePost = () => {
         defaultValues: {}
     })
 
-    const handleCreatePost = (data) => {
+    const handleCreatePost = (data:any) => {
         if (data.image === undefined) {
             showErrorMessage("انتخاب ویدیو الزامی است.")
             return
