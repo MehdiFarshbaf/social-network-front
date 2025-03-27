@@ -5,21 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dbcc474-7036-48a0-9112-22bed9335a01" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/inputs/TextAreaInput.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/loaders/SpinnerButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/services/Post.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/interfaces/postInterfaces.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/create-post/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/create-post/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/category/ListCategory.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/category/ListCategory.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/inputs/SelectInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/inputs/SelectInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/loading/Loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/loaders/Loading.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/apiConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/apiConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/serviceConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/serviceConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/notifications.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/notifications.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/postInterfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/postInterfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/userInterfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/userInterfaces.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +74,7 @@
       <workItem from="1742729572728" duration="1185000" />
       <workItem from="1742793463807" duration="6003000" />
       <workItem from="1742814024734" duration="3441000" />
-      <workItem from="1742814432348" duration="3962000" />
+      <workItem from="1742814432348" duration="5677000" />
     </task>
     <servers />
   </component>
