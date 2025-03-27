@@ -1,12 +1,15 @@
 "use client";
 
+import ConfirmModal from "@/components/confirmModal/ConfirmModal";
 import Loading from "@/components/loaders/Loading";
-import { useGetPostQuery } from "@/data/services/Post";
+import { useDeletePostMutation, useGetPostQuery } from "@/data/services/Post";
 import { IPost } from "@/interfaces/postInterfaces";
 import { showPersianDate } from "@/utils/functions";
+import { showSuccessMessage } from "@/utils/notifications";
 import { Tooltip } from "@mantine/core";
+import { tree } from "next/dist/build/templates/app-page";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { BsChevronLeft } from "react-icons/bs";
 import { BsFillTrash3Fill } from "react-icons/bs";
@@ -17,13 +20,30 @@ const PostDetail = () => {
   const { data, isLoading } = useGetPostQuery({
     _id: params.id ? params.id : "",
   });
+  const [deletePost, resultDeletePost] = useDeletePostMutation();
+
   const [post, setPost] = useState<IPost>();
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+  const router = useRouter();
+
+
+  const handleDeletePost=async()=>{
+    deletePost({_id:params.id})
+  }
 
   useEffect(() => {
     if (data?.success === true) {
       setPost(data.data);
     }
   }, [data]);
+
+  useEffect(() => {
+    if (resultDeletePost.data?.success === true) {
+      showSuccessMessage(resultDeletePost.data.message);
+      setShowDeleteModal(false)
+      router.push("/");
+    }
+  }, [resultDeletePost]);
 
   return (
     <main className="mt-20 main-container">
@@ -62,14 +82,21 @@ const PostDetail = () => {
                   <p>{post?.user.fullname}</p>
                 </div>
                 <div className="flex gap-4">
-                 <Tooltip label="ویرایش این پست"><Link href={`/post/edit/${post?._id}`}><FiEdit className="text-green-600"/></Link></Tooltip>
-                  <Tooltip label="حذف پست"><BsFillTrash3Fill className="text-red-600 cursor-pointer" /></Tooltip>
+                  <Tooltip label="ویرایش این پست">
+                    <Link href={`/post/edit/${post?._id}`}>
+                      <FiEdit className="text-green-600" />
+                    </Link>
+                  </Tooltip>
+                  <Tooltip label="حذف پست">
+                    <BsFillTrash3Fill onClick={()=>setShowDeleteModal(true)} className="text-red-600 cursor-pointer" />
+                  </Tooltip>
                 </div>
               </div>
               <p>{post?.description}</p>
             </div>
             <img src={post?.image} className="w-[350px]" alt="image post" />
           </div>
+          <ConfirmModal handleClose={()=>setShowDeleteModal(false)} opened={showDeleteModal} handleConfirm={()=>handleDeletePost()} isLoading={resultDeletePost.isLoading} title="حذف پست" question="آیا از حذف این پست اطمینان دارید؟" />
         </section>
       )}
     </main>

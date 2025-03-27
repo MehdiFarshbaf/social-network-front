@@ -37,7 +37,7 @@ const Category = () => {
         defaultValues: {title: ""},
     });
 
-    const handleCreatePost = (data) => {
+    const handleCreatePost = (data:any) => {
         createCategory(data);
     };
 

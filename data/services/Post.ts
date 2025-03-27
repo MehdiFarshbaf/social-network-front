@@ -38,7 +38,21 @@ export const PostApi = createApi({
             query: (body) => ({
                 url: `${Post_PATH}/${body._id}`,
                 method: 'PUT',
-                body:changeToFormData(body)
+                body: changeToFormData(body)
+            }),
+            invalidatesTags: ['Post'],
+        }),
+        likePost: builder.mutation<ResponseApi, ID>({
+            query: (body) => ({
+                url: `${Post_PATH}/like/${body._id}`,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['Post'],
+        }),
+        dislikePost: builder.mutation<ResponseApi, ID>({
+            query: (body) => ({
+                url: `${Post_PATH}/dislike/${body._id}`,
+                method: 'PUT',
             }),
             invalidatesTags: ['Post'],
         }),
@@ -51,4 +65,4 @@ export const PostApi = createApi({
         }),
     })
 })
-export const { useCreatePostMutation, useGetAllPostQuery ,useGetPostQuery,useEditPostMutation} = PostApi
+export const { useCreatePostMutation, useGetAllPostQuery, useGetPostQuery, useEditPostMutation, useDeletePostMutation,useLikePostMutation,useDislikePostMutation } = PostApi
