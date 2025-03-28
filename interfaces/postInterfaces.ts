@@ -1,6 +1,7 @@
 import { ResponseApi } from "@/interfaces/publlicInterfaces";
 import { ICategory } from "@/interfaces/categoryInterfaces";
 import { IUser } from "@/interfaces/userInterfaces";
+import { IComment } from "./commentInterfaces";
 
 export interface IResultCreatePost extends ResponseApi {
 
@@ -19,6 +20,7 @@ export interface IPost {
     createdAt: string,
     updatedAt: string,
     category: ICategory,
+    comments:IComment[]
 }
 
 export interface IResponseGetAllPost extends ResponseApi {

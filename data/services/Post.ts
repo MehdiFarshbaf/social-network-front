@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { ID, ResponseApi } from '@/interfaces/publlicInterfaces'
-import { Post_PATH } from '@/config/apiConfig'
+import { Comment_PATH, Post_PATH } from '@/config/apiConfig'
 import { IResultCreateCategory } from '@/interfaces/categoryInterfaces'
 import { baseQueryWithReAuth } from "@/config/serviceConfig";
 import { changeToFormData } from "@/utils/functions";
@@ -31,6 +31,30 @@ export const PostApi = createApi({
                 url: `${Post_PATH}`,
                 method: 'Post',
                 body: changeToFormData(body)
+            }),
+            invalidatesTags: ['Post']
+        }),
+        addComment: builder.mutation<ResponseApi, { postId: string, message: string }>({
+            query: body => ({
+                url: `${Comment_PATH}/${body.postId}`,
+                method: 'Post',
+                body
+            }),
+            invalidatesTags: ['Post']
+        }),
+        editComment: builder.mutation<ResponseApi, { commentId: string, message: string }>({
+            query: body => ({
+                url: `${Comment_PATH}/${body.commentId}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['Post']
+        }),
+        deleteComment: builder.mutation<ResponseApi, { commentId: string }>({
+            query: body => ({
+                url: `${Comment_PATH}/${body.commentId}`,
+                method: 'DELETE',
+                body
             }),
             invalidatesTags: ['Post']
         }),
@@ -65,4 +89,4 @@ export const PostApi = createApi({
         }),
     })
 })
-export const { useCreatePostMutation, useGetAllPostQuery, useGetPostQuery, useEditPostMutation, useDeletePostMutation,useLikePostMutation,useDislikePostMutation } = PostApi
+export const { useEditCommentMutation, useDeleteCommentMutation, useAddCommentMutation, useCreatePostMutation, useGetAllPostQuery, useGetPostQuery, useEditPostMutation, useDeletePostMutation, useLikePostMutation, useDislikePostMutation } = PostApi

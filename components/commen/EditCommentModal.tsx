@@ -1,34 +1,34 @@
 "use client";
 
 import { Modal } from "@mantine/core";
-import { ICategory } from "@/interfaces/categoryInterfaces";
 import { CallbackFunction } from "@/interfaces/publlicInterfaces";
-import { useEditCategoryMutation } from "@/data/services/Category";
 import * as Yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
 import { showSuccessMessage } from "@/utils/notifications";
-import TextInput from "@/components/inputs/TextInput";
+import { IComment } from "@/interfaces/commentInterfaces";
+import { useEditCommentMutation } from "@/data/services/Post";
+import TextAreaInput from "../inputs/TextAreaInput";
 
 interface IProps {
-  category: ICategory;
+  comment: IComment;
   opened: boolean;
   handleClose: CallbackFunction;
 }
 
-const EditCategoryModal = ({ category, opened, handleClose }: IProps) => {
+const EditCommentModal = ({ comment, opened, handleClose }: IProps) => {
   type FormValues = {
-    title: string;
-    _id: string;
+    message: string;
+    commentId: string;
   };
-  const [editCategory, resultEditCategory] = useEditCategoryMutation();
+  const [editComment, resultEditComment] = useEditCommentMutation();
 
   const schema = Yup.object().shape({
-    title: Yup.string()
+    message: Yup.string()
       .required("عنوان دسته بندی الزامی است.")
       .min(3, "دسته بندی حداقل باید 3 کاراکتر باشد."),
-    _id: Yup.string().required()
+      commentId: Yup.string().required()
   });
 
   const {
@@ -40,45 +40,40 @@ const EditCategoryModal = ({ category, opened, handleClose }: IProps) => {
     reset,
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
-    defaultValues: { title: category.title, _id: category._id },
+    defaultValues: { message: comment.message, commentId: comment._id },
   });
 
   const handleEditCategory = (data: any) => {
-    editCategory(data);
+    editComment(data);
   };
 
   useEffect(() => {
-    if (resultEditCategory.data?.success === true) {
-      showSuccessMessage(resultEditCategory.data.message);
-      reset({ title: "" });
+    if (resultEditComment.data?.success === true) {
+      showSuccessMessage(resultEditComment.data.message);
+      reset({ message: "" });
       handleClose();
     }
-  }, [resultEditCategory]);
+  }, [resultEditComment]);
 
   return (
     <Modal
       opened={opened}
       onClose={handleClose}
-      title="ویرایش دسته بندی"
+      title="ویرایش نظر"
       centered
     >
       <form onSubmit={handleSubmit(handleEditCategory)} className="w-full ">
-        <TextInput
-          name="title"
-          control={control}
-          type="text"
-          errors={errors}
-          placeholder="دسته بندی جدید"
-        />
+      <TextAreaInput name="message" classNames={{classLabel:"text-white"}} control={control} errors={errors} label="نظر شما"
+                                       placeholder="نظر خودتو بنویس"/>
         <button
           type="submit"
           className="btn bg-blue-500 text-white mt-4 text-base font-medium sm:w-full"
         >
           {" "}
-          ویرایش دسته بندی
+          ویرایش نظر
         </button>
       </form>
     </Modal>
   );
 };
-export default EditCategoryModal;
+export default EditCommentModal;

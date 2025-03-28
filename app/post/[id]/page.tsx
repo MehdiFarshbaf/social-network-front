@@ -1,5 +1,7 @@
 "use client";
 
+import AddComment from "@/components/commen/AddComment";
+import ListComment from "@/components/commen/ListComment";
 import ConfirmModal from "@/components/confirmModal/ConfirmModal";
 import Loading from "@/components/loaders/Loading";
 import { useDeletePostMutation, useGetPostQuery } from "@/data/services/Post";
@@ -24,12 +26,12 @@ const PostDetail = () => {
 
   const [post, setPost] = useState<IPost>();
   const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+  const [showCommentList, setShowCommentList] = useState<boolean>(false);
   const router = useRouter();
 
-
-  const handleDeletePost=async()=>{
-    deletePost({_id:params.id})
-  }
+  const handleDeletePost = async () => {
+    deletePost({ _id: params.id });
+  };
 
   useEffect(() => {
     if (data?.success === true) {
@@ -40,7 +42,7 @@ const PostDetail = () => {
   useEffect(() => {
     if (resultDeletePost.data?.success === true) {
       showSuccessMessage(resultDeletePost.data.message);
-      setShowDeleteModal(false)
+      setShowDeleteModal(false);
       router.push("/");
     }
   }, [resultDeletePost]);
@@ -88,7 +90,10 @@ const PostDetail = () => {
                     </Link>
                   </Tooltip>
                   <Tooltip label="حذف پست">
-                    <BsFillTrash3Fill onClick={()=>setShowDeleteModal(true)} className="text-red-600 cursor-pointer" />
+                    <BsFillTrash3Fill
+                      onClick={() => setShowDeleteModal(true)}
+                      className="text-red-600 cursor-pointer"
+                    />
                   </Tooltip>
                 </div>
               </div>
@@ -96,8 +101,28 @@ const PostDetail = () => {
             </div>
             <img src={post?.image} className="w-[350px]" alt="image post" />
           </div>
-          <ConfirmModal handleClose={()=>setShowDeleteModal(false)} opened={showDeleteModal} handleConfirm={()=>handleDeletePost()} isLoading={resultDeletePost.isLoading} title="حذف پست" question="آیا از حذف این پست اطمینان دارید؟" />
+          <div className="flex items-center gap-4 mt-4">
+            <button
+              type="button"
+              onClick={() => setShowCommentList(!showCommentList)}
+              className="btn text-white bg-green-500 text-base w-full flex-center sm:w-auto font-medium "
+            >
+              {showCommentList ? "پنهان کردن نظرات" : "نمایش نظرات"}
+            </button>
+          </div>
+          <ConfirmModal
+            handleClose={() => setShowDeleteModal(false)}
+            opened={showDeleteModal}
+            handleConfirm={() => handleDeletePost()}
+            isLoading={resultDeletePost.isLoading}
+            title="حذف پست"
+            question="آیا از حذف این پست اطمینان دارید؟"
+          />
         </section>
+      )}
+      <AddComment postId={params.id} />
+      {showCommentList && post && post?.comments.length > 0 && (
+        <ListComment comments={post?.comments} />
       )}
     </main>
   );
