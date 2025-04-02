@@ -1,7 +1,7 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 import { baseQueryWithReAuth } from '../../config/serviceConfig'
 import { changeToFormData } from '../../utils/functions'
-import { ID } from '@/interfaces/publlicInterfaces'
+import {ID, ResponseApi} from '@/interfaces/publlicInterfaces'
 import { USER_PATH } from '@/config/apiConfig'
 import { IResultLogin, IResultRegister } from '@/interfaces/authInterfaces'
 import { IResultGetProfile } from '@/interfaces/userInterfaces'
@@ -49,15 +49,15 @@ export const UserApi = createApi({
         //     }),
         //     invalidatesTags: ['User']
         // }),
-        // editUser: builder.mutation<ResultEditUser, any>({
-        //     query: (body) => ({
-        //         url: USER_PATH + "/" + body._id,
-        //         method: 'PUT',
-        //         body: changeToFormData(body)
+        changeProfileImage: builder.mutation<ResponseApi, any>({
+            query: (body) => ({
+                url: USER_PATH + "/change-image-profile",
+                method: 'PUT',
+                body: changeToFormData(body)
 
-        //     }),
-        //     invalidatesTags: ['User'],
-        // }),
+            }),
+            invalidatesTags: ['User'],
+        }),
         // deleteUser: builder.mutation<ResultDeleteUser, ID>({
         //     query: (body) => ({
         //         url: USER_PATH + "/" + body._id,
@@ -67,4 +67,4 @@ export const UserApi = createApi({
         // }),
     })
 })
-export const { useGetProfileQuery,useGetUserProfileQuery } = UserApi
+export const { useGetProfileQuery,useGetUserProfileQuery,useChangeProfileImageMutation } = UserApi

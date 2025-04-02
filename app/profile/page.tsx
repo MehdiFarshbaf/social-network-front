@@ -17,6 +17,7 @@ import { CiHeart } from "react-icons/ci";
 import { IoIosWarning } from "react-icons/io";
 import { useSelector } from "react-redux";
 import PostListUser from "./PostListUser";
+import ProfileImage from "@/components/profile/profileImage";
 
 const ProfilePage = () => {
   //   redux data
@@ -54,11 +55,7 @@ const ProfilePage = () => {
           <section className="w-full rounded-[8px] bg-white text-black p-8 mb-4">
             {/* user info */}
             <div className="w-full flex gap-3">
-              <img
-                src={profile?.profilePhoto}
-                alt="user image"
-                className="w-[130px] h-[130px] rounded-full"
-              />
+              <ProfileImage profileImage={profileUser.profilePhoto} />
               <div className="flex flex-col">
                 <div
                   className={`flex-center px-4 min-w-[250px] mb-4 rounded ${
