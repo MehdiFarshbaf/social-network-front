@@ -7,7 +7,7 @@ import { IoEyeOutline } from "react-icons/io5";
 import { BiLike, BiDislike } from "react-icons/bi";
 import Link from "next/link";
 import { useDislikePostMutation, useLikePostMutation } from "@/data/services/Post";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { showErrorMessage, showSuccessMessage } from "@/utils/notifications";
 
 interface IProps {
@@ -20,9 +20,12 @@ const Post = ({ post }: IProps) => {
   const [likePost,resultLikePost] = useLikePostMutation()
   const [dislikePost,resultDisLikePost] = useDislikePostMutation()
 
+  const [postData,setPostData] = useState<IPost>(post)
+
   useEffect(()=>{
     if(resultLikePost.data?.success === true){
       showSuccessMessage(resultLikePost.data.message)
+      setPostData(resultLikePost.data.data)
     }else if (resultLikePost.data?.success === false){
       showErrorMessage(resultLikePost.data.message)
     }
@@ -31,6 +34,7 @@ const Post = ({ post }: IProps) => {
   useEffect(()=>{
     if(resultDisLikePost.data?.success === true){
       showSuccessMessage(resultDisLikePost.data.message)
+      setPostData(resultDisLikePost.data.data)
     }else if (resultDisLikePost.data?.success === false){
       showErrorMessage(resultDisLikePost.data.message)
     }
@@ -38,11 +42,11 @@ const Post = ({ post }: IProps) => {
 
   return (
     <div className="text-black bg-white w-full rounded-xl p-6 flex gap-4">
-      <img
+      {post.user.profilePhoto && <img
         src={post.user.profilePhoto}
         alt="user image"
         className="w-16 h-16 rounded-full"
-      />
+      />}
       <div className="flex-1">
         <div className="w-full flex justify-between items-center">
           <p className="font-medium text-sm">{post.user.fullname}</p>
@@ -65,9 +69,9 @@ const Post = ({ post }: IProps) => {
           </div>
           <div className="flex gap-2 items-center">
             <BiDislike onClick={()=>dislikePost({_id:post._id})} className="text-rose-500 cursor-pointer"/>
-            <span className="text-xs text-rose-500">{post.disLikes.length}</span>
+            <span className="text-xs text-rose-500">{postData.disLikes.length}</span>
             <BiLike onClick={()=>likePost({_id:post._id})} className="text-green-600 cursor-pointer"/>
-            <span className="text-xs text-green-600">{post.likes.length}</span>
+            <span className="text-xs text-green-600">{postData.likes.length}</span>
           </div>
         </div>
       </div>

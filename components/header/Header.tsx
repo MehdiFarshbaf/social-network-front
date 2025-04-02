@@ -1,7 +1,7 @@
 "use client";
 
 import { RootState } from "@/data/store";
-import { Menu, MenuItem } from "@mantine/core";
+import { Menu } from "@mantine/core";
 
 import Link from "next/link";
 import { useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { MdCloudUpload } from "react-icons/md";
 
 const Header = () => {
+
   //   redux data
   const { profile, login } = useSelector((state: RootState) => state.userData);
 
@@ -36,7 +37,9 @@ const Header = () => {
                 />
               </Menu.Target>
               <Menu.Dropdown>
-                <Menu.Item>پروفایل</Menu.Item>
+                <Menu.Item component={Link} href="/profile">
+                  پروفایل
+                </Menu.Item>
                 <Menu.Item>تغییر پسورد</Menu.Item>
                 <Menu.Item>خروج</Menu.Item>
               </Menu.Dropdown>
@@ -44,10 +47,7 @@ const Header = () => {
             <Link href="/" className="text-white hover:text-[#74af72]">
               خانه
             </Link>
-            <Link
-              href="/category"
-              className="text-white hover:text-[#74af72]"
-            >
+            <Link href="/category" className="text-white hover:text-[#74af72]">
               ایجاد دسته بندی
             </Link>
             <p className="text-white hover:text-[#74af72] cursor-pointer">

@@ -30,3 +30,7 @@ export interface IResponseGetAllPost extends ResponseApi {
 export interface IResponseGetPost extends ResponseApi {
     data: IPost
 }
+
+export interface IResultLikeDislike extends ResponseApi{
+    data:IPost
+}

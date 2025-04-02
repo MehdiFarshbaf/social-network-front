@@ -4,7 +4,7 @@ import { Comment_PATH, Post_PATH } from '@/config/apiConfig'
 import { IResultCreateCategory } from '@/interfaces/categoryInterfaces'
 import { baseQueryWithReAuth } from "@/config/serviceConfig";
 import { changeToFormData } from "@/utils/functions";
-import { IResponseGetAllPost, IResponseGetPost, IResultCreatePost } from "@/interfaces/postInterfaces";
+import { IResponseGetAllPost, IResponseGetPost, IResultCreatePost, IResultLikeDislike } from "@/interfaces/postInterfaces";
 
 export const PostApi = createApi({
     reducerPath: 'PostApi',
@@ -66,14 +66,14 @@ export const PostApi = createApi({
             }),
             invalidatesTags: ['Post'],
         }),
-        likePost: builder.mutation<ResponseApi, ID>({
+        likePost: builder.mutation<IResultLikeDislike, ID>({
             query: (body) => ({
                 url: `${Post_PATH}/like/${body._id}`,
                 method: 'PUT',
             }),
             invalidatesTags: ['Post'],
         }),
-        dislikePost: builder.mutation<ResponseApi, ID>({
+        dislikePost: builder.mutation<IResultLikeDislike, ID>({
             query: (body) => ({
                 url: `${Post_PATH}/dislike/${body._id}`,
                 method: 'PUT',

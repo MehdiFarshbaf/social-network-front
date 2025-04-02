@@ -17,6 +17,9 @@
 .main-container {
   @apply px-4 sm:px-6 max-w-[1284px] xl:px-0 mx-auto;
 }
+button{
+  @apply hover:cursor-pointer
+}
 
 .inputClass {
   @apply h-[38px] w-full py-[6px] px-3 bg-white border-[1px] placeholder:text-gray-700 text-black  rounded-md outline-none focus:shadow

@@ -1,3 +1,4 @@
+import { IPost } from "./postInterfaces";
 import { ResponseApi } from "./publlicInterfaces";
 
 export interface IProfile {
@@ -8,11 +9,17 @@ export interface IProfile {
     admin: boolean,
     profilePhoto: string,
     isAccountVerified: boolean,
-    fullname: string
+    fullname: string,
+    createdAt: string,
+    updatedAt: string,
+    viewedBy: IUser[],
+    followers: IUser[],
+    following: IUser[],
+    _id:string
 }
 
-export interface IUser{
-    _id:string,
+export interface IUser {
+    _id: string,
     firstName: string,
     lastName: string,
     profilePhoto: string,
@@ -22,14 +29,15 @@ export interface IUser{
     isAdmin: boolean,
     isFollowing: boolean,
     isAccountVerified: boolean,
-    viewedBy: [],
-    followers: [],
-    following: [],
+    viewedBy: IUser[],
+    followers: IUser[],
+    following: IUser[],
     createdAt: string,
     updatedAt: string,
     fullname: string,
+    posts:IPost[]
 }
 
 export interface IResultGetProfile extends ResponseApi {
-    data: IProfile
+    data: IUser
 }

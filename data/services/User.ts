@@ -19,6 +19,13 @@ export const UserApi = createApi({
             }),
             providesTags: ['User']
         }),
+        getUserProfile: builder.query<IResultGetProfile, {userId:string}>({
+            query: (body) => ({
+                url: `${USER_PATH}/profile/${body.userId}`,
+                method: 'GET'
+            }),
+            providesTags: ['User']
+        }),
         // getToken: builder.query<IResultLogin,void >({
         //     query: () => ({
         //         url: `${USER_PATH}/token`,
@@ -60,4 +67,4 @@ export const UserApi = createApi({
         // }),
     })
 })
-export const { useGetProfileQuery } = UserApi
+export const { useGetProfileQuery,useGetUserProfileQuery } = UserApi
