@@ -1,10 +1,10 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { baseQueryWithReAuth } from '../../config/serviceConfig'
-import { changeToFormData } from '../../utils/functions'
+import {createApi} from '@reduxjs/toolkit/query/react'
+import {baseQueryWithReAuth} from '../../config/serviceConfig'
+import {changeToFormData} from '../../utils/functions'
 import {ID, ResponseApi} from '@/interfaces/publlicInterfaces'
-import { USER_PATH } from '@/config/apiConfig'
-import { IResultLogin, IResultRegister } from '@/interfaces/authInterfaces'
-import { IResultGetProfile } from '@/interfaces/userInterfaces'
+import {USER_PATH} from '@/config/apiConfig'
+import {IResultLogin, IResultRegister} from '@/interfaces/authInterfaces'
+import {IResultGetProfile} from '@/interfaces/userInterfaces'
 
 export const UserApi = createApi({
     reducerPath: 'UserApi',
@@ -19,7 +19,7 @@ export const UserApi = createApi({
             }),
             providesTags: ['User']
         }),
-        getUserProfile: builder.query<IResultGetProfile, {userId:string}>({
+        getUserProfile: builder.query<IResultGetProfile, { userId: string }>({
             query: (body) => ({
                 url: `${USER_PATH}/profile/${body.userId}`,
                 method: 'GET'
@@ -58,6 +58,14 @@ export const UserApi = createApi({
             }),
             invalidatesTags: ['User'],
         }),
+        editProfile: builder.mutation<ResponseApi, any>({
+            query: (body) => ({
+                url: `${USER_PATH}/${body.userId}`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['User'],
+        }),
         // deleteUser: builder.mutation<ResultDeleteUser, ID>({
         //     query: (body) => ({
         //         url: USER_PATH + "/" + body._id,
@@ -67,4 +75,4 @@ export const UserApi = createApi({
         // }),
     })
 })
-export const { useGetProfileQuery,useGetUserProfileQuery,useChangeProfileImageMutation } = UserApi
+export const {useEditProfileMutation,useGetProfileQuery, useGetUserProfileQuery, useChangeProfileImageMutation} = UserApi

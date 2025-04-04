@@ -3,7 +3,7 @@
 import { useGetAllPostQuery } from "@/data/services/Post";
 import { IPost } from "@/interfaces/postInterfaces";
 import { useEffect, useState } from "react";
-import Post from "./Post";
+import PostCard from "./PostCard";
 
 const PostList = () => {
   const { data: dataPosts, isLoading } = useGetAllPostQuery();
@@ -18,7 +18,7 @@ const PostList = () => {
   return (
     <section className="flex flex-col gap-8">
       {postList.map((post, index) => (
-        <Post post={post} key={index} />
+        <PostCard post={post} key={index} />
       ))}
     </section>
   );

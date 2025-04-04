@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Vazirmatn } from "next/font/google";
-import '@mantine/core/styles.css';
 import "./globals.css";
 import Header from "@/components/header/Header";
 import Providers from "./Providers";

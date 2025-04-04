@@ -14,7 +14,7 @@ interface IProps {
   post: IPost;
 }
 
-const Post = ({ post }: IProps) => {
+const PostCard = ({ post }: IProps) => {
 
   // services
   const [likePost,resultLikePost] = useLikePostMutation()
@@ -45,7 +45,7 @@ const Post = ({ post }: IProps) => {
       {post.user.profilePhoto && <img
         src={post.user.profilePhoto}
         alt="user image"
-        className="w-16 h-16 rounded-full"
+        className="w-16 h-16 rounded-full object-cover"
       />}
       <div className="flex-1">
         <div className="w-full flex justify-between items-center">
@@ -57,7 +57,7 @@ const Post = ({ post }: IProps) => {
         <Link href={`/post/${post._id}`}><img
           src={post.image}
           alt="post image"
-          className="w-[180px] h-[180px] mt-10 rounded-lg border "
+          className="w-[250px] h-[200px] mt-10 rounded-lg border object-cover"
         /></Link>
         <Link href={`/post/${post._id}`}><p className="text-base mt-2 font-normal">{post.title}</p></Link>
         <div className="w-full flex justify-between items-center mt-3">
@@ -78,4 +78,4 @@ const Post = ({ post }: IProps) => {
     </div>
   );
 };
-export default Post;
+export default PostCard;

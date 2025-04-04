@@ -102,13 +102,15 @@ const PostDetail = () => {
             <img src={post?.image} className="w-[350px]" alt="image post" />
           </div>
           <div className="flex items-center gap-4 mt-4">
-            <button
-              type="button"
-              onClick={() => setShowCommentList(!showCommentList)}
-              className="btn text-white bg-green-500 text-base w-full flex-center sm:w-auto font-medium "
-            >
-              {showCommentList ? "پنهان کردن نظرات" : "نمایش نظرات"}
-            </button>
+            {post && post?.comments?.length > 0 && (
+              <button
+                type="button"
+                onClick={() => setShowCommentList(!showCommentList)}
+                className="btn text-white bg-green-500 text-base w-full flex-center sm:w-auto font-medium "
+              >
+                {showCommentList ? "پنهان کردن نظرات" : "نمایش نظرات"}
+              </button>
+            )}
           </div>
           <ConfirmModal
             handleClose={() => setShowDeleteModal(false)}

@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dbcc474-7036-48a0-9112-22bed9335a01" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/components/profile/profileImage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/profile/EditProfileModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/post/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/post/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/PostListUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/PostListUser.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/Post.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/PostCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/PostList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/PostList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile/profileImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/profileImage.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/services/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/services/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/slice/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/slice/User.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +65,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="H:\Documents\React\my-project\social-network-front\components\profile" />
       <recent name="H:\Documents\React\my-project\social-network-front\app\(auth)\register" />
     </key>
   </component>
@@ -78,7 +87,9 @@
       <workItem from="1742814432348" duration="5677000" />
       <workItem from="1743066828393" duration="417000" />
       <workItem from="1743235461618" duration="19000" />
-      <workItem from="1743612120650" duration="1643000" />
+      <workItem from="1743612120650" duration="2402000" />
+      <workItem from="1743755635560" duration="2295000" />
+      <workItem from="1743758540846" duration="856000" />
     </task>
     <servers />
   </component>

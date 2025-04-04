@@ -14,7 +14,7 @@ const ProfileImage = ({profileImage}: IProps) => {
     const [changeImage,resultChangeImage]=useChangeProfileImageMutation()
 
     const [preview, setPreview] = useState<any>(null)
-    const [file, setFile] = useState<File>(null)
+    const [file, setFile] = useState<File|null>(null)
 
     const loadImage = (e: any) => {
         const image = e.target.files[0]
