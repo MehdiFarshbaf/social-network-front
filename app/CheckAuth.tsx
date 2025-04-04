@@ -1,61 +1,61 @@
 "use client";
 
-import { FC, Fragment, ReactNode, useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/data/store";
+import {FC, Fragment, ReactNode, useEffect, useState} from "react";
+import {usePathname, useRouter} from "next/navigation";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState} from "@/data/store";
 import Cookie from "js-cookie";
-import { useGetProfileQuery } from "@/data/services/User";
-import { skip } from "node:test";
-import { setProfile } from "@/data/slice/User";
+import {useGetProfileQuery} from "@/data/services/User";
+import {skip} from "node:test";
+import {setProfile} from "@/data/slice/User";
 
 interface IProps {
-  children: ReactNode;
+    children: ReactNode;
 }
 
-const CheckAuth: FC<IProps> = ({ children }) => {
-  const [checked, setChecked] = useState<boolean>(false);
+const CheckAuth = ({children}: IProps) => {
+    const [checked, setChecked] = useState<boolean>(false);
 
-  // services
-  const {
-    data: profileData,
-    isLoading: isLoadingProfile,
-    refetch,
-  } = useGetProfileQuery({ skip: !checked });
+    // services
+    const {data: profileData,
+        isLoading: isLoadingProfile,
+        refetch,
+    } = useGetProfileQuery({skip: !checked});
 
-  const pathname = usePathname();
-  const router = useRouter();
-  const dispatch = useDispatch();
+    const pathname = usePathname();
+    const router = useRouter();
+    const dispatch = useDispatch();
 
-  //   redux data
-  const { profile, login } = useSelector((state: RootState) => state.userData);
+    //   redux data
+    const {profile, login} = useSelector((state: RootState) => state.userData);
 
-  const checkToken = async () => {
-    await setChecked(true);
-  };
+    const checkToken = async () => {
+        await setChecked(true);
+    };
 
-  const checkPath = () => {};
+    const checkPath = () => {
+    };
 
-  useEffect(() => {
-    console.log("path is : ", pathname);
+    useEffect(() => {
+        console.log("path is : ", pathname);
 
-    if (!login) {
-      const token = Cookie.get("token");
-      console.log("token is : ", token);
-      if (token) {
-        checkToken();
-      } else {
-      }
-    }
-  }, [pathname]);
+        if (!login) {
+            const token = Cookie.get("token");
+            console.log("token is : ", token);
+            if (token) {
+                checkToken();
+            } else {
+            }
+        }
+    }, [pathname]);
 
-  useEffect(() => {
-    if (profileData?.success === true && checked) {
-      dispatch(setProfile(profileData.data));
-    }
-  }, [profileData]);
+    useEffect(() => {
+        if (profileData?.success === true && checked) {
+            dispatch(setProfile(profileData.data));
+        }
+    }, [profileData]);
 
-  return <Fragment>{children}</Fragment>;
+    return <Fragment>{children}</Fragment>;
 };
 
 export default CheckAuth;

@@ -15,23 +15,28 @@ import {
 import {CiHeart} from "react-icons/ci";
 import {IoIosWarning} from "react-icons/io";
 import {useSelector} from "react-redux";
-import PostListUser from "../../components/profile/PostListUser";
+import PostListUser from "../../../components/profile/PostListUser";
 import ProfileImage from "@/components/profile/profileImage";
 import EditProfileModal from "@/components/profile/EditProfileModal";
+import {useParams} from "next/navigation";
 
 const ProfilePage = () => {
+
+
     //   redux data
 
     const {profile, login} = useSelector((state: RootState) => state.userData);
+    const params = useParams<{ id: string }>();
 
     const {data: profileData, isLoading} = useGetUserProfileQuery(
-        {userId: profile ? profile._id : ""},
-        {skip: !login || !profile}
+        {userId: params.id},
     );
 
     const [profileUser, setProfileUser] = useState<IUser>();
 
     const [showModalEditProfile, setShowModalEditProfile] = useState<boolean>(false);
+
+    const [isMyProfile,setIsMyProfile]=useState<boolean>(false)
 
     useEffect(() => {
         if (profileData?.success === true) {
@@ -39,9 +44,16 @@ const ProfilePage = () => {
         }
     }, [profileData]);
 
+    useEffect(() => {
+        if(profile && profileUser){
+            setIsMyProfile(profile && profile?._id === params.id)
+        }
+
+    }, [profileUser]);
+
     return (
         <main className="main-container mt-20">
-            {profile?.isAccountVerified !== true && (
+            {isMyProfile && profile?.isAccountVerified !== true && (
                 <section className="w-full mb-6 rounded-[8px] bg-rose-400 p-2 flex items-center gap-2">
                     <IoIosWarning className="text-yellow-300"/>
                     <p className="text-yellow-300 font-medium text-base">
@@ -52,12 +64,12 @@ const ProfilePage = () => {
                     </button>
                 </section>
             )}
-            {profileUser?._id ? (
+            {profileUser?._id && profile ? (
                 <>
                     <section className="w-full rounded-[8px] bg-white text-black p-8 mb-4">
                         {/* user info */}
                         <div className="w-full flex gap-3">
-                            <ProfileImage profileImage={profileUser.profilePhoto}/>
+                            <ProfileImage profileImage={profileUser.profilePhoto} enableEdit={isMyProfile} />
                             <div className="flex flex-col">
                                 <div
                                     className={`flex-center px-4 min-w-[250px] mb-4 rounded ${
@@ -72,11 +84,11 @@ const ProfilePage = () => {
                                             : "حساب کاربری تایید نشده"}
                                     </p>
                                 </div>
-                                <p className="font-medium mb-4">{profile?.fullname}</p>
-                                {profile && (
+                                <p className="font-medium mb-4">{profileUser?.fullname}</p>
+                                {profileUser && (
                                     <p>
                                         عضویت از :{" "}
-                                        {showPersianDate(profile?.createdAt, "DD/MMM/YYYY")}
+                                        {showPersianDate(profileUser?.createdAt, "DD/MMM/YYYY")}
                                     </p>
                                 )}
                                 <div className="w-full flex justify-between items-center gap-4">
@@ -87,7 +99,7 @@ const ProfilePage = () => {
                             </div>
 
                             <div className="flex-1 flex justify-evenly items-end">
-                                <div className="flex-center gap-4">
+                                {profile && profile?._id !== params.id && <div className="flex-center gap-4">
                                     <button
                                         className="flex-center h-9 px-2 gap-1 rounded-[8px] text-white bg-green-400">
                                         دنبال کردن <CiHeart/>
@@ -95,16 +107,21 @@ const ProfilePage = () => {
                                     <button className="flex-center h-9 px-2 gap-1 rounded-[8px] text-white bg-red-400">
                                         لغو دنبال کردن <BsFillEmojiFrownFill/>
                                     </button>
-                                </div>
+                                </div>}
 
                                 <div className="flex-center gap-4">
-                                    <button onClick={()=>setShowModalEditProfile(true)}
-                                        className="flex-center h-9 px-2 gap-1 rounded-[8px] text-blue-400  bg-yellow-200">
+                                    {/*{profile && profile?._id === params.id && <button onClick={() => setShowModalEditProfile(true)}*/}
+                                    {/*         className="flex-center h-9 px-2 gap-1 rounded-[8px] text-blue-400  bg-yellow-200">*/}
+                                    {/*    ویرایش پروفایل <BsFillPencilFill/>*/}
+                                    {/*</button>}*/}
+                                    {isMyProfile && <button onClick={() => setShowModalEditProfile(true)}
+                                                                                      className="flex-center h-9 px-2 gap-1 rounded-[8px] text-blue-400  bg-yellow-200">
                                         ویرایش پروفایل <BsFillPencilFill/>
-                                    </button>
-                                    <button className="flex-center h-9 px-2 gap-1 rounded-[8px] text-white bg-blue-500">
+                                    </button>}
+                                    {profile && profile?._id !== params.id && <button
+                                        className="flex-center h-9 px-2 gap-1 rounded-[8px] text-white bg-blue-500">
                                         ارسال پیام <BsWalletFill/>
-                                    </button>
+                                    </button>}
                                 </div>
                             </div>
                         </div>
@@ -116,20 +133,23 @@ const ProfilePage = () => {
                         <PostListUser postList={profileUser.posts}/>
                         <aside className="w-1/3 text-white">
                             <h1 className="mb-5">بازدیده های اخیر</h1>
-                            {profileUser.viewedBy.map((user, index) => (
-                                <div className="w-full flex items-center gap-4" key={user._id}>
-                                    <img
-                                        src={user.profilePhoto}
-                                        alt="user image"
-                                        className="w-12 h-12 rounded-full"
-                                    />
-                                    <p>{user.fullname}</p>
-                                </div>
-                            ))}
+                            <div className="flex flex-col gap-3">
+                                {profileUser.viewedBy.map((user, index) => (
+                                    <div className="w-full flex items-center gap-4" key={user._id}>
+                                        <img
+                                            src={user.profilePhoto}
+                                            alt="user image"
+                                            className="w-12 h-12 rounded-full"
+                                        />
+                                        <p>{user.fullname}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </aside>
                     </section>
                     {/*modals*/}
-                    <EditProfileModal profile={profileUser} opened={showModalEditProfile} handleClose={()=>setShowModalEditProfile(false)}/>
+                    <EditProfileModal profile={profileUser} opened={showModalEditProfile}
+                                      handleClose={() => setShowModalEditProfile(false)}/>
                 </>
             ) : (
                 <Loading/>

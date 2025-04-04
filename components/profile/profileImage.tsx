@@ -5,10 +5,11 @@ import {useChangeProfileImageMutation} from "@/data/services/User";
 import {showSuccessMessage} from "@/utils/notifications";
 
 interface IProps {
-    profileImage: string
+    profileImage: string,
+    enableEdit:boolean
 }
 
-const ProfileImage = ({profileImage}: IProps) => {
+const ProfileImage = ({profileImage,enableEdit}: IProps) => {
 
 
     const [changeImage,resultChangeImage]=useChangeProfileImageMutation()
@@ -39,7 +40,7 @@ const ProfileImage = ({profileImage}: IProps) => {
                     className="w-[130px] h-[130px] rounded-full object-cover"
                 />
             </div>
-            <label id='upload' className={`btn flex-center text-xs mx-auto bg-blue-400 text-white px-6 mt-2 h-8`}>تغییر
+            {enableEdit && <label id='upload' className={`btn flex-center text-xs mx-auto bg-blue-400 text-white px-6 mt-2 h-8`}>تغییر
                 عکس
                 <input hidden id='upload' className="w-full h-full" type='file'
                        accept="image/png, image/jpeg"
@@ -49,7 +50,7 @@ const ProfileImage = ({profileImage}: IProps) => {
                            onChange({target: {value: e.target.files[0], name: "image"}})
                        }}/>
 
-            </label>
+            </label>}
         </div>
     )
 }

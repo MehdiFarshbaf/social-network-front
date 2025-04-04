@@ -9,7 +9,6 @@ import { IPost } from "@/interfaces/postInterfaces";
 import { showPersianDate } from "@/utils/functions";
 import { showSuccessMessage } from "@/utils/notifications";
 import { Tooltip } from "@mantine/core";
-import { tree } from "next/dist/build/templates/app-page";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";

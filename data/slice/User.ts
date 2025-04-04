@@ -1,5 +1,5 @@
-import { IProfile, IUser } from "@/interfaces/userInterfaces";
-import { createSlice } from "@reduxjs/toolkit";
+import {IProfile, IUser} from "@/interfaces/userInterfaces";
+import {createSlice} from "@reduxjs/toolkit";
 
 
 interface UserProps {
@@ -17,13 +17,17 @@ export const userData = createSlice({
     initialState,
     reducers: {
         setProfile: (state, action: { payload: IUser }) => {
-            return { ...state, ...{ profile: action.payload, login: true } };
+            return {...state, ...{profile: action.payload, login: true}};
         },
+        logoutUser: (state) => {
+            return {...state, ...{profile: null, login: false}};
+        }
     }
 })
 
 export const {
-    setProfile
+    setProfile,
+    logoutUser
 } = userData.actions
 
 export default userData.reducer
