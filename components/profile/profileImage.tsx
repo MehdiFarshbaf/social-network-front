@@ -32,7 +32,7 @@ const ProfileImage = ({profileImage,enableEdit}: IProps) => {
 
     return (
 
-        <div className="flex-center flex-col">
+        <div className="flex-center flex-col z-0">
             <div className="relative w-[130px] h-[130px] rounded-full">
                 <img
                     src={preview ? preview : profileImage}

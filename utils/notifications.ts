@@ -8,10 +8,10 @@ export const showErrorMessage = (message: string) => {
 }
 
 export const handleShowError = (data: any) => {
-    if (data.errors) {
+    if (data?.errors) {
       const keys = Object.keys(data.errors)
       toast.error(data.errors[keys[0]][0])
     } else {
-      toast.error(data.message)
+      toast.error(data?.message)
     }
   }

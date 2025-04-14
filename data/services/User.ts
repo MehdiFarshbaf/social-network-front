@@ -4,7 +4,7 @@ import {changeToFormData} from '../../utils/functions'
 import {ID, ResponseApi} from '@/interfaces/publlicInterfaces'
 import {USER_PATH} from '@/config/apiConfig'
 import {IResultLogin, IResultRegister} from '@/interfaces/authInterfaces'
-import {IResultGetProfile} from '@/interfaces/userInterfaces'
+import {IResponseFollowAndUnfollow, IResultGetProfile} from '@/interfaces/userInterfaces'
 
 export const UserApi = createApi({
     reducerPath: 'UserApi',
@@ -49,6 +49,24 @@ export const UserApi = createApi({
         //     }),
         //     invalidatesTags: ['User']
         // }),
+        followUser: builder.mutation<IResponseFollowAndUnfollow, { followId: string }>({
+            query: (body) => ({
+                url: `${USER_PATH}/follow`,
+                method: 'PUT',
+                body
+
+            }),
+            invalidatesTags: ['User'],
+        }),
+        unFollowUser: builder.mutation<IResponseFollowAndUnfollow, { unFollowId: string }>({
+            query: (body) => ({
+                url: `${USER_PATH}/unfollow`,
+                method: 'PUT',
+                body
+
+            }),
+            invalidatesTags: ['User'],
+        }),
         changeProfileImage: builder.mutation<ResponseApi, any>({
             query: (body) => ({
                 url: USER_PATH + "/change-image-profile",
@@ -75,4 +93,11 @@ export const UserApi = createApi({
         // }),
     })
 })
-export const {useEditProfileMutation,useGetProfileQuery, useGetUserProfileQuery, useChangeProfileImageMutation} = UserApi
+export const {
+    useUnFollowUserMutation,
+    useFollowUserMutation,
+    useEditProfileMutation,
+    useGetProfileQuery,
+    useGetUserProfileQuery,
+    useChangeProfileImageMutation
+} = UserApi

@@ -11,6 +11,7 @@ import * as Yup from 'yup'
 import Cookie from 'js-cookie';
 import { useDispatch } from "react-redux";
 import { setProfile } from "@/data/slice/User";
+import SpinnerButton from "@/components/loaders/SpinnerButton";
 
 const Login = () => {
 
@@ -55,11 +56,15 @@ const Login = () => {
                         <h1 className="text-center font-semibold text-2xl">ورود به حساب کاربری</h1>
                         <TextInput name="email" control={control} type="email" errors={errors} label="ایمیل" placeholder="ایمیل شما" />
                         <TextInput name="password" control={control} type="password" errors={errors} label="گذرواژه شما" placeholder="گذرواژه شما" />
-                        <button type="submit" className="btn bg-green-700 text-base font-medium sm:w-full">ورود</button>
+                        <button type="submit" disabled={resultLoginUser.isLoading} className="btn bg-green-700 text-base font-medium sm:w-full">
+                            {resultLoginUser.isLoading ?<SpinnerButton/> :"ورود"}
+                        </button>
+
+
                         <Link href="/forget-password">رمز عبورت رو فراموش کردی؟</Link>
                     </form>
                 </div>
-                <div className="w-3/5 flex-center flex-col text-center ">
+                <div className="w-3/5 flex-center flex-col text-center text-background ">
                     <h1 className="text-center mb-6 font-bold text-5xl">خوش اومدی به خونه</h1>
                     <h3 className="text-center font-medium text-2xl">ی بلاگ مهمونمون کن</h3>
                 </div>

@@ -30,8 +30,8 @@ export interface IUser {
     isFollowing: boolean,
     isAccountVerified: boolean,
     viewedBy: IUser[],
-    followers: IUser[],
-    following: IUser[],
+    followers: string[],
+    following: string[],
     createdAt: string,
     updatedAt: string,
     fullname: string,
@@ -40,4 +40,8 @@ export interface IUser {
 
 export interface IResultGetProfile extends ResponseApi {
     data: IUser
+}
+
+export interface IResponseFollowAndUnfollow extends ResponseApi{
+    data:IUser
 }

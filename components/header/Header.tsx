@@ -1,26 +1,32 @@
 "use client";
 
-import {RootState} from "@/data/store";
-import {Menu} from "@mantine/core";
-
 import Link from "next/link";
-import {useDispatch, useSelector} from "react-redux";
+import {useRouter} from "next/navigation";
+import {useState} from "react";
+
+import Cookie from 'js-cookie';
+import {Menu} from "@mantine/core";
 
 // icons
 import {MdCloudUpload} from "react-icons/md";
-import {logoutUser} from "@/data/slice/User";
-import {useRouter} from "next/navigation";
-import {useState} from "react";
+
+// modals
 import ConfirmModal from "@/components/confirmModal/ConfirmModal";
-import Cookie from 'js-cookie';
+
+// redux
+import {RootState} from "@/data/store";
+import {logoutUser} from "@/data/slice/User";
+import {useDispatch, useSelector} from "react-redux";
 
 const Header = () => {
 
-    //   redux data
+    // redux and data
     const {profile, login} = useSelector((state: RootState) => state.userData);
-
     const dispatch = useDispatch()
+
     const router = useRouter();
+
+    // variables
     const [showExitModal,setShowExitModal]=useState<boolean>(false)
 
     // functions
@@ -31,18 +37,12 @@ const Header = () => {
     }
 
     return (
-        <header className="w-full py-4 bg-[#ffffff00] fixed top-0">
-            {/*modals*/}
-            <ConfirmModal opened={showExitModal} handleClose={()=>setShowExitModal(false)} handleConfirm={()=>handleLogout()} title="خروج از حساب کاربری" question="آیا میخواهید از حساب کاربری خود خارج شوید؟"/>
+        <header className="w-full py-4 fixed top-0 shadow-lg bg-background z-10">
             <nav className="main-container flex justify-between items-center">
                 {!login ? (
                     <div className="flex justify-start items-center gap-4">
-                        <Link href="/register" className="text-white hover:text-[#74af72]">
-                            ثبت نام
-                        </Link>
-                        <Link href="/login" className="text-white hover:text-[#74af72]">
-                            ورود
-                        </Link>
+                        <Link href="/register" className="text-white hover:text-[#74af72]">ثبت نام</Link>
+                        <Link href="/login" className="text-white hover:text-[#74af72]">ورود</Link>
                     </div>
                 ) : (
                     <div className="flex justify-start items-center gap-4">
@@ -88,6 +88,8 @@ const Header = () => {
                     </Link>
                 </div>
             </nav>
+            {/*modals*/}
+            <ConfirmModal opened={showExitModal} handleClose={()=>setShowExitModal(false)} handleConfirm={()=>handleLogout()} title="خروج از حساب کاربری" question="آیا میخواهید از حساب کاربری خود خارج شوید؟"/>
         </header>
     );
 };

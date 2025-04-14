@@ -41,15 +41,15 @@ button{
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /*--background: #0a0a0a;*/
+    /*--foreground: #ededed;*/
   }
 }
 
 body {
 
   /* background: var(--background); */
-  background: black !important;
-  color: var(--foreground);
+  /*background: black !important;*/
+  /*color: var(--foreground);*/
   font-family: Arial, Helvetica, sans-serif;
 }

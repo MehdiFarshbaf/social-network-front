@@ -41,7 +41,7 @@ const PostCard = ({post}: IProps) => {
     }, [resultDisLikePost])
 
     return (
-        <div className="text-black bg-white w-full rounded-xl p-6 flex gap-4">
+        <div className="text-black bg-white w-full rounded-xl p-6 flex gap-4 shadow">
             {post.user.profilePhoto &&
                 <Link href={`/profile/${post.user._id}`}>
                     <img

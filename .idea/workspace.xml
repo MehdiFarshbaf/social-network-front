@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8dbcc474-7036-48a0-9112-22bed9335a01" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/components/profile/LastVisits.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/CheckAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/CheckAuth.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/post/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/post/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/profile/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/[id]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(auth)/register/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/register/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/profile/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/[id]/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/header/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/header/Header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/home/PostCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/PostCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/profile/PostListUser.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/PostListUser.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/profile/profileImage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/profile/profileImage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/slice/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/slice/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/services/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/services/User.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interfaces/userInterfaces.ts" beforeDir="false" afterPath="$PROJECT_DIR$/interfaces/userInterfaces.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/notifications.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/notifications.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,10 +34,6 @@
     <option name="selectedTabId" value="ProjectErrors" />
     <option name="showPreview" value="true" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 0
-}</component>
   <component name="ProjectId" id="2uU0EJ7ywpfnbVGQsab6cZlK9zx" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -41,24 +42,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/Tailwind Formatter/lib/Tailwind Formatter-2.0.13.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;H:\\Documents\\React\\my-project\\social-network-front\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="H:\Documents\React\my-project\social-network-front\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="H:\Documents\React\my-project\social-network-front\app\profile\[id]" />
@@ -88,7 +89,15 @@
       <workItem from="1743755635560" duration="2295000" />
       <workItem from="1743758540846" duration="1498000" />
       <workItem from="1743767769809" duration="4659000" />
-      <workItem from="1743794699721" duration="1394000" />
+      <workItem from="1743794699721" duration="1659000" />
+      <workItem from="1743877141520" duration="2948000" />
+      <workItem from="1743880783455" duration="633000" />
+      <workItem from="1743881691140" duration="48000" />
+      <workItem from="1743968085482" duration="991000" />
+      <workItem from="1744054687377" duration="345000" />
+      <workItem from="1744138563393" duration="3498000" />
+      <workItem from="1744653140212" duration="3738000" />
+      <workItem from="1744658438140" duration="299000" />
     </task>
     <servers />
   </component>
@@ -105,19 +114,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/components/header/Header.tsx</url>
-          <line>57</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -57,7 +57,7 @@ const Register = () => {
                         <button type="submit" className="btn bg-green-700 text-base font-medium sm:w-full">ثبت نام</button>
                     </form>
                 </div>
-                <div className="w-3/5 flex-center flex-col text-center ">
+                <div className="w-3/5 flex-center flex-col text-center text-background">
                     <h1 className="text-center mb-6 font-bold text-5xl">به جامعه بزرگ ما خوش آمدید</h1>
                     <h3 className="text-center font-medium text-2xl">ثبت نام کنید</h3>
                 </div>
