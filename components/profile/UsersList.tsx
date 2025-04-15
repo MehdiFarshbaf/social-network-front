@@ -28,8 +28,14 @@ const UsersList = ({ usersList }: IProps) => {
             </div>
           </div>
           <div className="flex gap-2">
-            <p className="font-normal text-sm">دنبال کننده : <span className="text-sm">{user.followers.length}</span></p>
-            <p className="font-normal text-sm">دنبال شونده : <span className="text-sm">{user.following.length}</span></p>
+            <p className="font-normal text-sm">
+              دنبال کننده :{" "}
+              <span className="text-sm">{user.followers.length}</span>
+            </p>
+            <p className="font-normal text-sm">
+              دنبال شونده :{" "}
+              <span className="text-sm">{user.following.length}</span>
+            </p>
           </div>
         </Link>
       ))}
