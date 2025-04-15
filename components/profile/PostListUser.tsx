@@ -6,7 +6,7 @@ interface IProps {
 }
 const PostListUser = ({ postList }: IProps) => {
   return (
-    <div className="w-full flex-1 flex flex-col gap-4 mb-8">
+    <div className="w-full flex flex-col gap-4 mb-8 px-2">
       {postList.map((post, index) => (
         <PostCard post={post} key={index} />
       ))}

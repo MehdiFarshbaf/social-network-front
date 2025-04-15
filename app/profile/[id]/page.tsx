@@ -27,6 +27,7 @@ import { showSuccessMessage } from "@/utils/notifications";
 import Link from "next/link";
 import LastVisits from "@/components/profile/LastVisits";
 import { Tabs } from "@mantine/core";
+import UsersList from "@/components/profile/UsersList";
 
 const ProfilePage = () => {
   //   redux data
@@ -87,7 +88,7 @@ const ProfilePage = () => {
   useEffect(() => {
     if (profile && profileUser?._id && profile._id) {
       const isExits = profileUser?.followers.find(
-        (item) => item.toString() === profile?._id.toString()
+        (item) => item._id.toString() === profile?._id.toString()
       );
       setIsFollowed(isExits ? true : false);
     }
@@ -108,7 +109,7 @@ const ProfilePage = () => {
       )}
       {profileUser?._id && profile ? (
         <Fragment>
-          <section className="w-full rounded-[8px] bg-white text-black p-8 mb-4 shadow-2xl">
+          <section className="w-full rounded-[8px] bg-white text-black p-8 mb-8 box-shadow">
             {/* user info */}
             <div className="w-full flex gap-3">
               <ProfileImage
@@ -136,17 +137,6 @@ const ProfilePage = () => {
                     {showPersianDate(profileUser.createdAt, "DD/MMM/YYYY")}
                   </p>
                 )}
-                <div className="w-full flex justify-between items-center gap-4">
-                  <p>{`پست ها : ${profileUser?.posts?.length}`}</p>
-                  <Link
-                    href={{
-                      query: { followers: profileUser.followers },
-                      pathname: `/profile/followers`,
-                    }}
-                    className="text-xs text-sky-600 font-normal"
-                  >{`دنبال کننده ها : ${profileUser?.followers.length}`}</Link>
-                  <p className="text-xs text-sky-600 font-normal">{`دنبال شونده ها : ${profileUser?.following.length}`}</p>
-                </div>
               </div>
 
               <div className="flex-1 flex justify-evenly items-end">
@@ -194,18 +184,27 @@ const ProfilePage = () => {
             )}
           </section>
 
-          <Tabs defaultValue="posts"  value={activeTab} onChange={setActiveTab}>
+          <Tabs defaultValue="posts" value={activeTab} onChange={setActiveTab}>
             <Tabs.List>
               <Tabs.Tab value="posts">پست ها</Tabs.Tab>
-              <Tabs.Tab value="second">دنبال کننده ها</Tabs.Tab>
-              <Tabs.Tab value="third">دنبال شونده ها</Tabs.Tab>
+              <Tabs.Tab value="followers">دنبال کننده ها</Tabs.Tab>
+              <Tabs.Tab value="following">دنبال شونده ها</Tabs.Tab>
             </Tabs.List>
-              
           </Tabs>
-          <section className="flex gap-8 mt-20 shadow-lg">
-          {profileUser && profileUser?.posts?.length > 0 && (
-                <PostListUser postList={profileUser.posts} />
-              )}
+          <section className="flex gap-8 mt-20 ">
+            {profileUser && profileUser?.posts?.length > 0 && (
+              <div className="w-full flex-1">
+                {activeTab === "posts" && (
+                  <PostListUser postList={profileUser.posts} />
+                )}
+                {activeTab === "followers" && (
+                  <UsersList usersList={profileUser.followers} />
+                )}
+                {activeTab === "following" && (
+                  <UsersList usersList={profileUser.following} />
+                )}
+              </div>
+            )}
             <LastVisits listUsers={profileUser.viewedBy} />
           </section>
           {/*modals*/}

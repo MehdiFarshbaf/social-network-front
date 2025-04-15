@@ -25,7 +25,7 @@ button{
   @apply h-[38px] w-full py-[6px] px-3 bg-white border-[1px] placeholder:text-gray-700 text-black  rounded-md outline-none focus:shadow
 }
 .label-input {
-  @apply font-normal text-sm leading-[26px] text-neutral-500 text-neutral-500;
+  @apply font-normal text-sm leading-[26px] text-neutral-500;
 }
 .text-area-input{
   @apply  w-full py-[6px] px-3 bg-white border-[1px] placeholder:text-gray-700 text-black  rounded-md outline-none focus:shadow
@@ -39,6 +39,15 @@ button{
   @apply flex justify-center items-center
 }
 
+.box-shadow{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.box-shadow-sm{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.box-shadow-user{
+  box-shadow: rgba(72, 72, 240, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     /*--background: #0a0a0a;*/
