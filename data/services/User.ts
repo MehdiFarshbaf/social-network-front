@@ -90,6 +90,14 @@ export const UserApi = createApi({
             }),
             invalidatesTags: ['User'],
         }),
+        updatePassword: builder.mutation<ResponseApi, {password:string}>({
+            query: (body) => ({
+                url: USER_PATH + "/update-password",
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['User'],
+        }),
     })
 })
 export const {
@@ -102,5 +110,6 @@ export const {
     useCheckOTPMutation,
     useGetUsersQuery,
     useBlockUserMutation,
-    useUnblockUserMutation
+    useUnblockUserMutation,
+    useUpdatePasswordMutation
 } = UserApi
