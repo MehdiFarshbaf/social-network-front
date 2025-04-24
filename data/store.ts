@@ -5,6 +5,7 @@ import { AuthApi } from "./services/Auth";
 import { UserApi } from "./services/User";
 import { CategoryApi } from "./services/Category";
 import { PostApi } from "./services/Post";
+import { EmailApi } from "./services/Email";
 import userData from './slice/User';
 
 
@@ -14,13 +15,15 @@ export const store = configureStore({
         [AuthApi.reducerPath]: AuthApi.reducer,
         [UserApi.reducerPath]: UserApi.reducer,
         [PostApi.reducerPath]: PostApi.reducer,
+        [EmailApi.reducerPath]: EmailApi.reducer,
         [CategoryApi.reducerPath]: CategoryApi.reducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat([
         AuthApi.middleware,
         UserApi.middleware,
         PostApi.middleware,
-        CategoryApi.middleware
+        CategoryApi.middleware,
+        EmailApi.middleware
     ])
 })
 

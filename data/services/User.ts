@@ -84,6 +84,14 @@ export const UserApi = createApi({
             }),
             invalidatesTags: ['User'],
         }),
+        checkOTP: builder.mutation<ResponseApi, void>({
+            query: body => ({
+                url: `/check-otp`,
+                method: 'PUT',
+                body
+            }),
+            invalidatesTags: ['User']
+        }),
         // deleteUser: builder.mutation<ResultDeleteUser, ID>({
         //     query: (body) => ({
         //         url: USER_PATH + "/" + body._id,
@@ -99,5 +107,6 @@ export const {
     useEditProfileMutation,
     useGetProfileQuery,
     useGetUserProfileQuery,
-    useChangeProfileImageMutation
+    useChangeProfileImageMutation,
+    useCheckOTPMutation
 } = UserApi

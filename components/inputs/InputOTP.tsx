@@ -1,13 +1,12 @@
 import { Controller } from "react-hook-form";
-import { FC } from "react";
 import { ClassName, FormComponentProps } from "@/interfaces/publlicInterfaces";
+import { PinInput } from "@mantine/core";
 
 interface IProps extends FormComponentProps {
   name: string;
   label?: string;
   disable?: boolean;
   placeholder?: string;
-  type?: "text" | "email" | "password";
   classNames?: {
     classContainer?: ClassName;
     classInput?: ClassName;
@@ -15,31 +14,31 @@ interface IProps extends FormComponentProps {
   };
 }
 
-const TextInput = ({
+const InputOTP = ({
   name = "",
   control,
   errors,
   placeholder = "",
   label = "",
-  type = "text",
   classNames,
-  disable = false,
+  disable = false,setValue
 }: IProps) => {
   return (
-    <div className={`${classNames?.classContainer}`}>
+    <div className={`${classNames?.classContainer} flex-center flex-col`}>
       {label.length > 0 && (
         <p className="mb-2 font-normal text-base">{label}</p>
       )}
       <Controller
         render={({ field: { onChange, onBlur, value, name, ref } }) => (
-          <input
-            disabled={disable}
-            type={type}
-            placeholder={placeholder}
-            className={`inputClass ${classNames?.classInput}`}
-            value={value || ""}
-            onChange={onChange} // send value to hook form
-            onBlur={onBlur} // notify when input is touched
+          <PinInput
+            length={6}
+            type="number"
+            onChange={e=>{
+              setValue(name,e)}}
+            setValue={value}
+            disable={disable}
+            classNames={{ classInput: `inputClass ${classNames?.classInput}` }}
+            onBlur={onblur}
           />
         )}
         name={name}
@@ -53,4 +52,4 @@ const TextInput = ({
     </div>
   );
 };
-export default TextInput;
+export default InputOTP;

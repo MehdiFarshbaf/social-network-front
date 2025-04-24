@@ -15,7 +15,7 @@
 
 
 .main-container {
-  @apply px-4 sm:px-6 max-w-[1284px] xl:px-0 mx-auto;
+  @apply px-4 sm:px-6 max-w-[1284px] xl:px-0 mx-auto ;
 }
 button{
   @apply hover:cursor-pointer

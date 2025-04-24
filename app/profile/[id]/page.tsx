@@ -22,22 +22,26 @@ import { useSelector } from "react-redux";
 import PostListUser from "../../../components/profile/PostListUser";
 import ProfileImage from "@/components/profile/profileImage";
 import EditProfileModal from "@/components/profile/EditProfileModal";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { showSuccessMessage } from "@/utils/notifications";
 import Link from "next/link";
 import LastVisits from "@/components/profile/LastVisits";
 import { Tabs } from "@mantine/core";
 import UsersList from "@/components/profile/UsersList";
+import { useSendOTPMutation } from "@/data/services/Email";
+import SpinnerButton from "@/components/loaders/SpinnerButton";
 
 const ProfilePage = () => {
   //   redux data
 
+  const router = useRouter();
   const { profile, login } = useSelector((state: RootState) => state.userData);
   const params = useParams<{ id: string }>();
 
   const { data: profileData, isLoading } = useGetUserProfileQuery({
     userId: params.id,
   });
+  const [sendOTP, resultSendOTP] = useSendOTPMutation();
 
   const [followUser, resultFollow] = useFollowUserMutation();
   const [unFollowUser, resultUnFollow] = useUnFollowUserMutation();
@@ -94,6 +98,13 @@ const ProfilePage = () => {
     }
   }, [profile, profileUser]);
 
+  useEffect(() => {
+    if (resultSendOTP.data?.success === true) {
+      showSuccessMessage(resultSendOTP.data.message);
+      router.push("/profile/check-otp");
+    }
+  }, [resultSendOTP]);
+
   return (
     <main className="main-container mt-20">
       {isMyProfile && profile?.isAccountVerified !== true && (
@@ -102,8 +113,15 @@ const ProfilePage = () => {
           <p className="text-yellow-300 font-medium text-base">
             حساب کاربری شما تایید نشده است.
           </p>
-          <button className="text-white px-2 h-9 bg-blue-500 rounded cursor-pointer">
-            برای تایید حساب کاربری کلیک کنید.
+          <button
+            onClick={() => sendOTP()}
+            className="text-white px-2 h-9 bg-blue-500 rounded cursor-pointer"
+          >
+            {resultSendOTP.isLoading ? (
+              <SpinnerButton />
+            ) : (
+              "برای تایید حساب کاربری کلیک کنید."
+            )}
           </button>
         </section>
       )}
@@ -171,10 +189,19 @@ const ProfilePage = () => {
                     </button>
                   )}
                   {/*{profile && profile?._id !== params.id && <button*/}
-                  {!isMyProfile && (
-                    <button className="flex-center h-9 px-2 gap-1 rounded-[8px] text-white bg-blue-500">
+                  {!isMyProfile && profile.isAdmin && (
+                    <Link
+                      href={{
+                        pathname: `/profile/send-email`,
+                        query: {
+                          to: profileUser.email,
+                        },
+                      }}
+                      // as="/profile/send-email"
+                      className="flex-center h-9 px-2 gap-1 rounded-[8px] text-white bg-blue-500"
+                    >
                       ارسال پیام <BsWalletFill />
-                    </button>
+                    </Link>
                   )}
                 </div>
               </div>
