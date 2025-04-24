@@ -45,3 +45,7 @@ export interface IResultGetProfile extends ResponseApi {
 export interface IResponseFollowAndUnfollow extends ResponseApi{
     data:IUser
 }
+
+export interface IResultGetUsers extends ResponseApi{
+    data:IUser[]
+}

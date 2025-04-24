@@ -1,10 +1,10 @@
-import {createApi} from '@reduxjs/toolkit/query/react'
-import {baseQueryWithReAuth} from '../../config/serviceConfig'
-import {changeToFormData} from '../../utils/functions'
-import {ID, ResponseApi} from '@/interfaces/publlicInterfaces'
-import {USER_PATH} from '@/config/apiConfig'
-import {IResultLogin, IResultRegister} from '@/interfaces/authInterfaces'
-import {IResponseFollowAndUnfollow, IResultGetProfile} from '@/interfaces/userInterfaces'
+import { createApi } from '@reduxjs/toolkit/query/react'
+import { baseQueryWithReAuth } from '../../config/serviceConfig'
+import { changeToFormData } from '../../utils/functions'
+import { ID, ResponseApi } from '@/interfaces/publlicInterfaces'
+import { USER_PATH } from '@/config/apiConfig'
+import { IResultLogin, IResultRegister } from '@/interfaces/authInterfaces'
+import { IResponseFollowAndUnfollow, IResultGetProfile, IResultGetUsers } from '@/interfaces/userInterfaces'
 
 export const UserApi = createApi({
     reducerPath: 'UserApi',
@@ -26,29 +26,13 @@ export const UserApi = createApi({
             }),
             providesTags: ['User']
         }),
-        // getToken: builder.query<IResultLogin,void >({
-        //     query: () => ({
-        //         url: `${USER_PATH}/token`,
-        //         method: 'GET',
-        //     }),
-        //     providesTags: ['User'],
-        // }),
-        // registerUser: builder.mutation<IResultRegister, any>({
-        //     query: body => ({
-        //         url: `${USER_PATH}/register`,
-        //         method: 'POST',
-        //         body
-        //     }),
-        //     invalidatesTags: ['User']
-        // }),
-        // loginUser: builder.mutation<IResultLogin, any>({
-        //     query: body => ({
-        //         url: `${USER_PATH}/login`,
-        //         method: 'POST',
-        //         body
-        //     }),
-        //     invalidatesTags: ['User']
-        // }),
+        getUsers: builder.query<IResultGetUsers, void>({
+            query: () => ({
+                url: `${USER_PATH}`,
+                method: 'GET'
+            }),
+            providesTags: ['User']
+        }),
         followUser: builder.mutation<IResponseFollowAndUnfollow, { followId: string }>({
             query: (body) => ({
                 url: `${USER_PATH}/follow`,
@@ -92,13 +76,20 @@ export const UserApi = createApi({
             }),
             invalidatesTags: ['User']
         }),
-        // deleteUser: builder.mutation<ResultDeleteUser, ID>({
-        //     query: (body) => ({
-        //         url: USER_PATH + "/" + body._id,
-        //         method: 'DELETE',
-        //     }),
-        //     invalidatesTags: ['User'],
-        // }),
+        blockUser: builder.mutation<ResponseApi, {user_id:string}>({
+            query: (body) => ({
+                url: USER_PATH + "/block/" + body.user_id,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['User'],
+        }),
+        unblockUser: builder.mutation<ResponseApi, {user_id:string}>({
+            query: (body) => ({
+                url: USER_PATH + "/unblock/" + body.user_id,
+                method: 'PUT',
+            }),
+            invalidatesTags: ['User'],
+        }),
     })
 })
 export const {
@@ -108,5 +99,8 @@ export const {
     useGetProfileQuery,
     useGetUserProfileQuery,
     useChangeProfileImageMutation,
-    useCheckOTPMutation
+    useCheckOTPMutation,
+    useGetUsersQuery,
+    useBlockUserMutation,
+    useUnblockUserMutation
 } = UserApi

@@ -55,7 +55,7 @@ const Header = () => {
                                     />
                             </Menu.Target>
                             <Menu.Dropdown>
-                                <Menu.Item component={Link} href={`/profile/${profile._id}`}>
+                                <Menu.Item component={Link} href={`/profile/${profile?._id}`}>
                                     پروفایل
                                 </Menu.Item>
                                 <Menu.Item>تغییر پسورد</Menu.Item>
@@ -68,6 +68,7 @@ const Header = () => {
                         <Link href="/category" className="text-white hover:text-[#74af72]">
                             ایجاد دسته بندی
                         </Link>
+                        {profile?.isAdmin && <Link href="/users" className="text-white hover:text-[#74af72]">کاربران</Link>}
                         <p onClick={()=>setShowExitModal(true)} className="text-white hover:text-[#74af72] cursor-pointer">
                             خروج
                         </p>
