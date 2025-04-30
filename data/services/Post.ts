@@ -19,6 +19,13 @@ export const PostApi = createApi({
             }),
             providesTags: ['Post']
         }),
+        getPopularPost: builder.query<IResponseGetAllPost, void>({
+            query: () => ({
+                url: `${Post_PATH}/popular-posts`,
+                method: 'GET'
+            }),
+            providesTags: ['Post']
+        }),
         getPost: builder.query<IResponseGetPost, ID>({
             query: body => ({
                 url: `${Post_PATH}/${body._id}`,
@@ -89,4 +96,4 @@ export const PostApi = createApi({
         }),
     })
 })
-export const { useEditCommentMutation, useDeleteCommentMutation, useAddCommentMutation, useCreatePostMutation, useGetAllPostQuery, useGetPostQuery, useEditPostMutation, useDeletePostMutation, useLikePostMutation, useDislikePostMutation } = PostApi
+export const { useEditCommentMutation, useGetPopularPostQuery, useDeleteCommentMutation, useAddCommentMutation, useCreatePostMutation, useGetAllPostQuery, useGetPostQuery, useEditPostMutation, useDeletePostMutation, useLikePostMutation, useDislikePostMutation } = PostApi

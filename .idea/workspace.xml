@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dbcc474-7036-48a0-9112-22bed9335a01" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/profile/[id]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/profile/[id]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/inputs/TextInput.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/inputs/TextInput.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/apiConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/config/apiConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/data/store.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-    </list>
+    <list default="true" id="8dbcc474-7036-48a0-9112-22bed9335a01" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -114,6 +104,7 @@
       <workItem from="1745439251349" duration="791000" />
       <workItem from="1745497734392" duration="557000" />
       <workItem from="1745498316100" duration="1261000" />
+      <workItem from="1745696763661" duration="10000" />
     </task>
     <servers />
   </component>

@@ -19,6 +19,13 @@ export const UserApi = createApi({
             }),
             providesTags: ['User']
         }),
+        getPopularUsers: builder.query<IResultGetUsers, void>({
+            query: () => ({
+                url: `${USER_PATH}/popular`,
+                method: 'GET'
+            }),
+            providesTags: ['User']
+        }),
         getUserProfile: builder.query<IResultGetProfile, { userId: string }>({
             query: (body) => ({
                 url: `${USER_PATH}/profile/${body.userId}`,
@@ -111,5 +118,6 @@ export const {
     useGetUsersQuery,
     useBlockUserMutation,
     useUnblockUserMutation,
-    useUpdatePasswordMutation
+    useUpdatePasswordMutation,
+    useGetPopularUsersQuery
 } = UserApi
